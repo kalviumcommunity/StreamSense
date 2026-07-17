@@ -1,0 +1,23 @@
+{
+  "name": "streamsense",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <h1 align=\"center\">StreamSense</h1>\r   <p align=\"center\"><em>Viewer Engagement Analytics for Content Retention</em></p>\r   <p align=\"center\">\r     <img src=\"https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white\" />\r     <img src=\"https://img.shields.io/badge/Power_BI-Dashboard-F2C811?style=for-the-badge&logo=powerbi&logoColor=black\" />\r     <img src=\"https://img.shields.io/badge/Pandas-Analysis-150458?style=for-the-badge&logo=pandas&logoColor=white\" />\r     <img src=\"https://img.shields.io/badge/Scikit--Learn-ML-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white\" />\r     <img src=\"https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge\" />\r   </p>\r </p>",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalviumcommunity/StreamSense.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalviumcommunity/StreamSense/issues"
+  },
+  "homepage": "https://github.com/kalviumcommunity/StreamSense#readme"
+}
