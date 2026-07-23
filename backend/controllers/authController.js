@@ -1,5 +1,5 @@
 const bcrypt=require("bcrypt");
-const jwt=require("jsonwebtoken");
+const generateJWT = require("../utils/generateJWT");
 
 const User=require("../models/User");
 
@@ -83,19 +83,7 @@ message:"Invalid Password"
 
 }
 
-const token=jwt.sign(
-
-{id:user._id,role:user.role},
-
-process.env.JWT_SECRET,
-
-{
-
-expiresIn:"7d"
-
-}
-
-);
+const token = generateJWT(user);
 
 res.json({
 
