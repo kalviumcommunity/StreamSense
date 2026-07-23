@@ -1,17 +1,82 @@
-const express=require("express");
+const express = require("express");
 
-const router=express.Router();
+const router = express.Router();
 
-const{
+const protect = require("../middleware/authMiddleware");
+const authorize = require("../middleware/roleMiddleware");
 
-createContent,
+const {
 
-getContent
+    createContent,
 
-}=require("../controllers/contentController");
+    getAllContent,
 
-router.post("/",createContent);
+    getContentById,
 
-router.get("/",getContent);
+    updateContent,
 
-module.exports=router;
+    deleteContent
+
+} = require("../controllers/contentController");
+
+router.post(
+
+    "/",
+
+    protect,
+
+    authorize("Admin"),
+
+    createContent
+
+);
+
+router.get(
+
+    "/",
+
+    protect,
+
+    authorize("Admin", "Analyst"),
+
+    getAllContent
+
+);
+
+router.get(
+
+    "/:id",
+
+    protect,
+
+    authorize("Admin", "Analyst"),
+
+    getContentById
+
+);
+
+router.put(
+
+    "/:id",
+
+    protect,
+
+    authorize("Admin"),
+
+    updateContent
+
+);
+
+router.delete(
+
+    "/:id",
+
+    protect,
+
+    authorize("Admin"),
+
+    deleteContent
+
+);
+
+module.exports = router;

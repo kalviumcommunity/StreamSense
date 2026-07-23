@@ -5,6 +5,8 @@ const morgan = require("morgan");
 
 const authRoutes = require("./routes/authRoutes");
 const contentRoutes = require("./routes/contentRoutes");
+const viewerSessionRoutes = require("./routes/viewerSessionRoutes");
+const engagementRoutes = require("./routes/engagementRoutes");
 
 const app = express();
 
@@ -21,5 +23,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/content", contentRoutes);
+app.use("/api/viewer-session", viewerSessionRoutes);
+app.use("/api/engagement", engagementRoutes);
 
 module.exports = app;

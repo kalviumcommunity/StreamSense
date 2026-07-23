@@ -1,62 +1,66 @@
 const mongoose = require("mongoose");
 
 const viewerSessionSchema = new mongoose.Schema(
-{
-    content_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Content",
-        required: true
+  {
+    viewer: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
 
-    viewer_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+    content: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Content",
+      required: true,
     },
 
-    watch_date: {
-        type: Date,
-        required: true
+    watchDuration: {
+      type: Number,
+      required: true,
     },
 
-    completion_percentage: {
-        type: Number,
-        required: true
+    completionPercentage: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 100,
     },
 
-    watch_duration_sec: {
-        type: Number,
-        required: true
+    pauseCount: {
+      type: Number,
+      default: 0,
     },
 
-    pause_count: Number,
-
-    rewind_count: Number,
-
-    fast_forward_count: Number,
-
-    device_type: {
-        type: String,
-        enum: ["Mobile", "Laptop", "Smart TV", "Tablet"]
+    rewindCount: {
+      type: Number,
+      default: 0,
     },
 
-    subscription_tier: {
-        type: String,
-        enum: ["Basic", "Standard", "Premium"]
+    device: {
+      type: String,
+      enum: ["Mobile", "Laptop", "Tablet", "TV"],
+      required: true,
     },
 
-    region: String,
+    region: {
+      type: String,
+      required: true,
+    },
 
-    session_status: {
-        type: String,
-        enum: ["Completed", "Incomplete"]
-    }
-},
-{
-    timestamps: true
-});
+    subscriptionType: {
+      type: String,
+      enum: ["Free", "Basic", "Premium"],
+      required: true,
+    },
 
-module.exports = mongoose.model(
-    "ViewerSession",
-    viewerSessionSchema
+    watchedAt: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+  {
+    timestamps: true,
+  }
 );
+
+module.exports = mongoose.model("ViewerSession", viewerSessionSchema);
