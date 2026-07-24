@@ -1,35 +1,54 @@
 const mongoose = require("mongoose");
 
-const retentionSchema = new mongoose.Schema({
-
+const retentionAnalyticsSchema = new mongoose.Schema(
+{
     content_id:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"Content"
+        ref:"Content",
+        required:true
     },
 
-    analysis_period:String,
+    day_1_retention:{
+        type:Number,
+        default:0
+    },
 
-    retention_rate:Number,
+    day_7_retention:{
+        type:Number,
+        default:0
+    },
 
-    churn_rate:Number,
+    day_30_retention:{
+        type:Number,
+        default:0
+    },
 
-    returning_viewers:Number,
+    average_return_days:{
+        type:Number,
+        default:0
+    },
 
-    new_viewers:Number,
+    churn_rate:{
+        type:Number,
+        default:0
+    },
 
-    renewed_viewers:Number,
+    repeat_viewers:{
+        type:Number,
+        default:0
+    },
 
-    renewed_subscribers:Number,
+    calculated_on:{
+        type:Date,
+        default:Date.now
+    }
 
-    churned_subscribers:Number,
-
-    calculated_on:Date
-
-},{
+},
+{
     timestamps:true
 });
 
-module.exports = mongoose.model(
+module.exports=mongoose.model(
     "RetentionAnalytics",
-    retentionSchema
+    retentionAnalyticsSchema
 );
