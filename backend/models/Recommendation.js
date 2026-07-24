@@ -1,24 +1,37 @@
 const mongoose = require("mongoose");
 
-const recommendationSchema = new mongoose.Schema({
-
-    content_id:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Content"
+const recommendationSchema = new mongoose.Schema(
+{
+    content_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Content",
+        required: true
     },
 
-    recommendation_type:String,
+    recommendation_type: {
+        type: String,
+        enum: [
+            "Trending",
+            "Popular",
+            "Similar Genre",
+            "High Engagement",
+            "Top Rated"
+        ],
+        required: true
+    },
 
-    confidence_score:Number,
+    score: {
+        type: Number,
+        required: true
+    },
 
-    priority:String,
-
-    reason:String,
-
-    generated_on:Date
-
-},{
-    timestamps:true
+    reason: {
+        type: String,
+        required: true
+    }
+},
+{
+    timestamps: true
 });
 
 module.exports = mongoose.model(
